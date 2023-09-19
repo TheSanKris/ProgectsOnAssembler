@@ -1,0 +1,114 @@
+Тут 2 варианта
+
+------------------
+
+Выводит число и говорит нечётное оно или нет
+
+IN
+WR 040
+WR 041
+RD #49
+WR 042
+
+Vvod: RDI 111111
+OUT
+RDI 000000
+OUT
+RD 042
+ADD #1
+WR 042
+IN
+WR @042
+RD 040
+SUB #1
+WR 040
+JNZ Vvod
+
+Cicle: RD @042
+OUT
+RD #0
+OUT
+RD @042
+DIV #2
+MUL #2
+SUB @042
+JZ flag
+RD #1
+OUT
+flag: 
+RD 042
+SUB #1
+WR 042
+RD 041
+SUB #1
+WR 041
+JNZ Cicle
+HLT
+
+---------
+Считает количество нечётных чисел
+
+IN
+WR 050
+WR 051
+RD #59
+WR 052
+
+Vvod: RDI 111111
+OUT
+RDI 000000
+OUT
+RD 052
+ADD #1
+WR 052
+IN
+WR @052
+RD 050
+SUB #1
+WR 050
+JNZ Vvod
+
+Cicle: RD @052
+OUT
+RD #0
+OUT
+RD @052
+DIV #2
+MUL #2
+SUB @052
+JZ flag
+RD 055
+ADD #1
+WR 055
+flag: 
+RD 052
+SUB #1
+WR 052
+RD 051
+SUB #1
+WR 051
+JNZ Cicle
+RD 055
+OUT
+HLT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
